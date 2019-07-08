@@ -17,13 +17,14 @@ This script generates a png of the week's forecast.
 
    `cd forecast`
 
-3. Create a file called devinfo.json containing your Dark Sky API key, latitude and longitude
+2. Create a file called devinfo.json containing your Dark Sky API key, latitude and longitude
 
    `echo '{"latitude": 72.5, "longitude": -21.4, "apiKey": "abcdefg"}' > devinfo.json`
 
-4. Run the main script.
+3. Run the main script.
 
    `./run.sh`
 
 ### TODO:
 1. Move everything into a single R or python script
+2. Include measured data from past 24 hours in forecast
