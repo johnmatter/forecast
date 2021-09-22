@@ -1,5 +1,8 @@
 # forecast
 
+_**Please note that this repository will soon be obsolete.
+The DarkSky API will be [shut down by late 2022](https://blog.darksky.net).**_
+
 This script generates a png displaying the coming week's forecast.
 I've chosen to use Fahrenheit for temperature and millimeters per hour for
 precipitation rate, an admittedly unorthodox combination of units.
@@ -13,7 +16,7 @@ This allows us to use the same y-axis ticks for all values.
 ![Example output](forecast_example.png)
 
 ### Prerequisites
-1. A Dark Sky API key. You can register [here](https://darksky.net/dev).
+1. A Dark Sky API key. ~~You can register [here](https://darksky.net/dev).~~ You can no longer register for the API.
 2. python3 and modules `requests` and `json`
 3. R libraries `ggplot2`, `anytime`, and `jsonlite`
 
