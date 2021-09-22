@@ -1,6 +1,12 @@
 # forecast
 
-This script generates a png of the week's forecast.
+This script generates a png displaying the coming week's forecast.
+I've chosen to use Fahrenheit for temperature and millimeters per hour for
+precipitation rate, an admittedly unorthodox combination of units.
+I made this choice because with these units, values can reasonably be assumed
+to span roughly the same orders of magnitude, which happen to have the same
+scale as precipitation probability (i.e. between 0 and 100).
+This allows us to use the same y-axis ticks for all values.
 
 [Powered by Dark Sky](https://darksky.net/poweredby/ "Dark Sky")
 
@@ -30,3 +36,4 @@ This script generates a png of the week's forecast.
 ### TODO:
 1. Move everything into a single R or python script
 2. Include measured data from past 24 hours in forecast
+3. Add timezone to devinfo.json and remove explicit east coast from plot.R
