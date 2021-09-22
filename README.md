@@ -40,3 +40,4 @@ This allows us to use the same y-axis ticks for all values.
 1. Move everything into a single R or python script
 2. Include measured data from past 24 hours in forecast
 3. Add timezone to devinfo.json and remove explicit east coast from plot.R
+4. Find a new API!
