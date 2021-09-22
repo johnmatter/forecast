@@ -6,9 +6,9 @@ library(jsonlite)
 d<-fromJSON("hourly.json")
 d$time <- anytime(d$time)
 
-# Convert precipitation units
-# Probability to percent
-# Intensity to mm/hour
+# Convert precipitation units:
+# 1) Probability to percent
+# 2) Intensity to mm/hour
 d$precipProbability <- 100*d$precipProbability
 d$precipIntensity <- 25.4*d$precipIntensity
 
@@ -38,16 +38,20 @@ colorMap <- c(
               'precipProb' = 'skyblue1',
               'precipInt' = 'skyblue4'
              )
+label_breaks <- c('temp', 'feels', 'precipProb', 'precipInt')
+label_labels <- c('Temperature [°F]', 'Feels like [°F]', 'Precipitation probability [%]', 'Precipitation [mm/hr]')
 
 # Plot
 p <- ggplot(d) +
         # Where are do days end?
-        geom_vline(data = dates, aes(xintercept = as.numeric(dates$Date)), alpha=0.3) +
+        geom_vline(data = dates, aes(xintercept = as.numeric(Date)), alpha=0.3) +
 
         # Quantities to plot
         geom_line(aes(x=time,y=temperature, colour="temp"), alpha=0.7) +
+        geom_area(aes(x=time,y=temperature, fill="temp"), alpha=0.0) +
 
         geom_line(aes(x=time,y=apparentTemperature, colour="feels"), alpha=0.7) +
+        geom_area(aes(x=time,y=apparentTemperature, fill="feels"), alpha=0.0) +
 
         geom_line(aes(x=time,y=precipProbability, colour="precipProb"), alpha=0.7) +
         geom_area(aes(x=time,y=precipProbability, fill="precipProb"), alpha=0.3) +
@@ -56,14 +60,14 @@ p <- ggplot(d) +
         geom_area(aes(x=time,y=precipIntensity, fill="precipInt"), alpha=0.3) +
 
         # Fill/color
-        scale_color_manual(values=colorMap) +
-        scale_fill_manual(values=colorMap) +
+        scale_color_manual(name="Value", values=colorMap, breaks=label_breaks, labels=label_labels) +
+        scale_fill_manual(name="Value", values=colorMap, breaks=label_breaks, labels=label_labels) +
 
         # What time is it now?
         geom_vline(aes(xintercept=Sys.time()), color="red", alpha=0.6) +
 
         # Text labels for days
-        geom_text(data = dates,  aes(x = dates$Midday, label=dates$Label, y=0, vjust=-0.5), check_overlap = TRUE, size = 3.5) +
+        geom_text(data = dates,  aes(x = Midday, label=Label, y=0, vjust=-0.5), check_overlap = TRUE, size = 3.5) +
 
         # Axes
         scale_y_continuous(breaks=seq(0,100,10)) +
