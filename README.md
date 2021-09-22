@@ -4,6 +4,8 @@ This script generates a png of the week's forecast.
 
 [Powered by Dark Sky](https://darksky.net/poweredby/ "Dark Sky")
 
+![Example output](forecast_example.png)
+
 ### Prerequisites
 1. A Dark Sky API key. You can register [here](https://darksky.net/dev).
 2. python3 and modules `requests` and `json`
